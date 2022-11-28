@@ -6,7 +6,11 @@ require('isomorphic-fetch');
 const server = express();
 const appCache = new nodecache({ stdTTL : 3599});
 const todosURL = 'https://jsonplaceholder.typicode.com/todos';
-
+server.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+  });
 server.get('/', async (req,res) => {
     if(appCache.has('movieData')){
         console.log('Get data from Node Cache');
