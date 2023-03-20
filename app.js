@@ -46,7 +46,7 @@ server.listen(4000, (err) => {
           {
             for(let i = 0; i < dailyBoxOfficeList.length; i++){
                 if(movieData.data.items[0].title.includes(dailyBoxOfficeList[i].movieNm)){
-                    dailyBoxOfficeList[i].image = movieData.data.items[0].image;
+                    dailyBoxOfficeList[i].image = movieData.data.items[0].image.replace("mit110","mit500");
                 }    
             }
             console.log(dailyBoxOfficeList);
